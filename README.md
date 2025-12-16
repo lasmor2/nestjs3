@@ -41,7 +41,7 @@ Create a `.env` file in the root directory:
 
 ```env
 PORT=3001
-DATABASE_URL="postgresql://lasmor:adeleke2019@localhost:5434/nest?schema=public"
+DATABASE_URL="postgresql://username:yourPassword@localhost:5434/nest?schema=public"
 JWT_SECRET="your-secret-key"
 ```
 
@@ -108,14 +108,17 @@ npm run test:watch
 ## API Endpoints
 
 ### Authentication
+
 - `POST /auth/signup` - Register new user
 - `POST /auth/signin` - Login user
 
 ### Users
+
 - `GET /users/me` - Get current user profile
 - `PATCH /users` - Update user profile
 
 ### Bookmarks
+
 - `GET /bookmarks` - Get all user bookmarks
 - `GET /bookmarks/:id` - Get bookmark by ID
 - `POST /bookmarks` - Create new bookmark
@@ -142,28 +145,26 @@ prisma/
 ## Database Schema
 
 ### User
+
 - id, email (unique), hash (password)
 - firstName, lastName
 - timestamps (createdAt, updatedAt)
 - Relations: bookmarks[]
 
 ### Bookmark
+
 - id, title, description, link
 - userId (foreign key)
 - timestamps (createdAt, updatedAt)
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run start:dev` | Start development server with watch mode |
-| `npm run build` | Build production bundle |
-| `npm run lint` | Run ESLint |
-| `npm run format` | Format code with Prettier |
-| `npm run db:dev:restart` | Reset development database |
-| `npm run db:test:restart` | Reset test database |
-| `npm run test:e2e` | Run E2E tests |
-
-## License
-
-UNLICENSED
+| Command                   | Description                              |
+| ------------------------- | ---------------------------------------- |
+| `npm run start:dev`       | Start development server with watch mode |
+| `npm run build`           | Build production bundle                  |
+| `npm run lint`            | Run ESLint                               |
+| `npm run format`          | Format code with Prettier                |
+| `npm run db:dev:restart`  | Reset development database               |
+| `npm run db:test:restart` | Reset test database                      |
+| `npm run test:e2e`        | Run E2E tests                            |
