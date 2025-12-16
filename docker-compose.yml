@@ -1,0 +1,31 @@
+services:
+  dev-db:
+    image: postgres:13
+    ports:
+      - '5434:5432'
+    environment:
+      POSTGRES_USER: lasmor
+      POSTGRES_PASSWORD: adeleke2019
+      POSTGRES_DB: nest
+    networks:
+      - app-network
+  test-db:
+    image: postgres:13
+    ports:
+      - '5435:5432'
+    environment:
+      POSTGRES_USER: lasmor
+      POSTGRES_PASSWORD: adeleke2019
+      POSTGRES_DB: nest
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U lasmor -d nest']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app2-network
+networks:
+  app-network:
+    driver: bridge
+  app2-network:
+    driver: bridge
